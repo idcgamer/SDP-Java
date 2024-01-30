@@ -12,10 +12,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -32,45 +34,26 @@ public class SDP {
         var txtfilename = txtfile.nextLine();  // Read user input
         System.out.println("File name is: " + txtfilename);  // Output user input
         
-        
         //Finds file via directory and by entered file name
         File file = new File ("/Users/mosye/Downloads/"+ txtfilename + ".txt");
         Scanner scan = new Scanner (file);
         
-        //Print whole file content
-        while(scan.hasNextLine()){
-        System.out.println(scan.nextLine());
-        }
+        Path fileName = Path.of("/Users/mosye/Downloads/"+ txtfilename + ".txt");
+
+        String readable = Files.readString(fileName);
         
-        String line;
-        String delimiter = ",";
-        List<List<String>> data = new ArrayList<>();
+        String[] words = readable.split(" ");
+        Pattern pattern = Pattern.compile(" ");
+        words = pattern.split(readable);
         
-        try (BufferedReader br = new BufferedReader (new FileReader(file)))
-        {
-            while ((line = br.readLine()) != null)
-            {
-                String[] values = line.split(delimiter);
-                data.add(Arrays.asList(values));
-            }
-        } catch (IOException e){
-            System.out.println(e);
-        }
+        ArrayList<String> list = new ArrayList<>();
+		for (String string : words) {
+			list.add(string);
+		}
+        System.out.println(list);
         
-        for (List<String> row : data){
-            System.out.println(row);
-        }
-        
-        System.out.println(data);
-        
-        String x = "hello";
-        if(Arrays.asList(data).contains(x)){
-            System.out.println("a");
-        }
-        
-        else {
-            System.out.println("b");
-        }
+        int totalCount = list.size();
+        System.out.println(totalCount);
     }
 
 }
