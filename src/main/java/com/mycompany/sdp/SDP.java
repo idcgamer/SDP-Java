@@ -5,18 +5,14 @@
 
 package com.mycompany.sdp;
 
-import java.io.BufferedReader;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Collections;
 import java.util.regex.Pattern;
 
 /**
@@ -54,6 +50,38 @@ public class SDP {
         
         int totalCount = list.size();
         System.out.println(totalCount);
+        
+        int ifcount = Collections.frequency(list, "if");
+        System.out.println(ifcount);
+        
+        int trycount = Collections.frequency(list, "try");
+        System.out.println(trycount);
+        
+        int catchcount = Collections.frequency(list, "catch");
+        System.out.println(catchcount);
+        
+        int thencount = Collections.frequency(list, "then");
+        System.out.println(thencount);
+        
+        int selectcount = Collections.frequency(list, "select");
+        System.out.println(selectcount);
+        
+        int switchcount = Collections.frequency(list, "switch");
+        System.out.println(switchcount);
+        
+        int forcount = Collections.frequency(list, "for");
+        System.out.println(forcount);
+        
+        int docount = Collections.frequency(list, "do");
+        System.out.println(docount);
+        
+        int whilecount = Collections.frequency(list, "while");
+        System.out.println(whilecount);
+        
+        int ccCalculation = (ifcount+trycount+catchcount+thencount+selectcount+switchcount+forcount+docount+whilecount) + 1;
+        
+        System.out.println("The total Cyclomatic Complexity value is " + ccCalculation);
+        
     }
 
 }
