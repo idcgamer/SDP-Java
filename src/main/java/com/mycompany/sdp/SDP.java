@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.regex.Pattern;
@@ -28,13 +29,10 @@ public class SDP {
         
         // Converts file name into readable string variable
         var txtfilename = txtfile.nextLine();  // Read user input
-        System.out.println("File name is: " + txtfilename);  // Output user input
+        var addedtxt = txtfilename + ".txt";
+        System.out.println("File name is: " + addedtxt);  // Output user input
         
-        //Finds file via directory and by entered file name
-        File file = new File ("/Users/mosye/Downloads/"+ txtfilename + ".txt");
-        Scanner scan = new Scanner (file);
-        
-        Path fileName = Path.of("/Users/mosye/Downloads/"+ txtfilename + ".txt");
+        Path fileName = Path.of("/Users/mosye/Downloads/"+ addedtxt);
 
         String readable = Files.readString(fileName);
         
