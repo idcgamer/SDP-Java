@@ -45,51 +45,59 @@ public class SDP {
         System.out.println(list);
         
         int javaCodePublic = Collections.frequency(list, "public");
-        System.out.println(javaCodePublic);
         int javaCodeStatic = Collections.frequency(list, "static");
-        System.out.println(javaCodeStatic);
         int javaCodeVoid = Collections.frequency(list,"void");
-        System.out.println(javaCodeVoid);
         
-        int pythonCodedef = Collections.frequency(list,"def");
-        int pythonCodeprint = Collections.frequency(list, "print");
-        int pythonCodeHash = Collections.frequency(list, "#");
-        if (javaCodePublic > 0 && javaCodeStatic > 0 && javaCodeVoid > 0){
-            int totalCount = list.size();
-        System.out.println(totalCount);
+        int cplushash = Collections.frequency(list, "#");
+        int cplusinclude = Collections.frequency(list, "include");
+                
+        if (cplushash > 0 && cplusinclude > 0){
+            int CtotalCount = list.size();
+            int Cifcount = Collections.frequency(list, "if");
+            int Ctrycount = Collections.frequency(list, "try");
+            int Ccatchcount = Collections.frequency(list, "catch");
+            int Cthencount = Collections.frequency(list, "then");
+            int Cselectcount = Collections.frequency(list, "select");
+            int Cswitchcount = Collections.frequency(list, "switch");
+            int Cforcount = Collections.frequency(list, "for");
+            int Cdocount = Collections.frequency(list, "do");
+            int Cwhilecount = Collections.frequency(list, "while"); 
+            
+            int CCCCalculation = (Cifcount+Ctrycount+Ccatchcount+Cthencount+Cselectcount+Cswitchcount+Cforcount+Cdocount+Cwhilecount) + 1;
         
-        int ifcount = Collections.frequency(list, "if");
-        System.out.println(ifcount);
-        
-        int trycount = Collections.frequency(list, "try");
-        System.out.println(trycount);
-        
-        int catchcount = Collections.frequency(list, "catch");
-        System.out.println(catchcount);
-        
-        int thencount = Collections.frequency(list, "then");
-        System.out.println(thencount);
-        
-        int selectcount = Collections.frequency(list, "select");
-        System.out.println(selectcount);
-        
-        int switchcount = Collections.frequency(list, "switch");
-        System.out.println(switchcount);
-        
-        int forcount = Collections.frequency(list, "for");
-        System.out.println(forcount);
-        
-        int docount = Collections.frequency(list, "do");
-        System.out.println(docount);
-        
-        int whilecount = Collections.frequency(list, "while");
-        System.out.println(whilecount);
-        
-        int ccCalculation = (ifcount+trycount+catchcount+thencount+selectcount+switchcount+forcount+docount+whilecount) + 1;
-        
-        System.out.println("The total Cyclomatic Complexity value is " + ccCalculation);
+            System.out.println("The total Cyclomatic Complexity value is " + CCCCalculation);
         }
+        else if (javaCodePublic > 0 && javaCodeStatic > 0 && javaCodeVoid > 0){
+            int JtotalCount = list.size();
+            int Jifcount = Collections.frequency(list, "if");
+            int Jtrycount = Collections.frequency(list, "try");
+            int Jcatchcount = Collections.frequency(list, "catch");
+            int Jthencount = Collections.frequency(list, "then");
+            int Jselectcount = Collections.frequency(list, "select");
+            int Jswitchcount = Collections.frequency(list, "switch");
+            int Jforcount = Collections.frequency(list, "for");
+            int Jdocount = Collections.frequency(list, "do");
+            int Jwhilecount = Collections.frequency(list, "while");
+            int JCCCalculation = (Jifcount+Jtrycount+Jcatchcount+Jthencount+Jselectcount+Jswitchcount+Jforcount+Jdocount+Jwhilecount) + 1;
         
+            System.out.println("The total Cyclomatic Complexity value is " + JCCCalculation);
+        }
+        else {
+            int PtotalCount = list.size();
+            int Pifcount = Collections.frequency(list, "if");
+            int Pelifcount = Collections.frequency(list, "elif");
+            int Ptrycount = Collections.frequency(list, "try");
+            int Pcatchcount = Collections.frequency(list, "catch");
+            int Pthencount = Collections.frequency(list, "then");
+            int Pselectcount = Collections.frequency(list, "select");
+            int Pswitchcount = Collections.frequency(list, "switch");
+            int Pforcount = Collections.frequency(list, "for");
+            int Pdocount = Collections.frequency(list, "do");
+            int Pwhilecount = Collections.frequency(list, "while");
+            int PCCCalculation = (Pifcount+Pelifcount+Ptrycount+Pcatchcount+Pthencount+Pselectcount+Pswitchcount+Pforcount+Pdocount+Pwhilecount) + 1;
+        
+            System.out.println("The total Cyclomatic Complexity value is " + PCCCalculation);
+        }
         
     }
 
