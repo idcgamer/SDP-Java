@@ -44,7 +44,18 @@ public class SDP {
 		}
         System.out.println(list);
         
-        int totalCount = list.size();
+        int javaCodePublic = Collections.frequency(list, "public");
+        System.out.println(javaCodePublic);
+        int javaCodeStatic = Collections.frequency(list, "static");
+        System.out.println(javaCodeStatic);
+        int javaCodeVoid = Collections.frequency(list,"void");
+        System.out.println(javaCodeVoid);
+        
+        int pythonCodedef = Collections.frequency(list,"def");
+        int pythonCodeprint = Collections.frequency(list, "print");
+        int pythonCodeHash = Collections.frequency(list, "#");
+        if (javaCodePublic > 0 && javaCodeStatic > 0 && javaCodeVoid > 0){
+            int totalCount = list.size();
         System.out.println(totalCount);
         
         int ifcount = Collections.frequency(list, "if");
@@ -77,6 +88,8 @@ public class SDP {
         int ccCalculation = (ifcount+trycount+catchcount+thencount+selectcount+switchcount+forcount+docount+whilecount) + 1;
         
         System.out.println("The total Cyclomatic Complexity value is " + ccCalculation);
+        }
+        
         
     }
 
