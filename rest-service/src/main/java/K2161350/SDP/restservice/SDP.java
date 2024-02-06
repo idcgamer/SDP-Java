@@ -5,11 +5,6 @@
 
  package K2161350.SDP.restservice;
 
-import java.util.Scanner;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.regex.Pattern;
@@ -20,24 +15,12 @@ import java.util.regex.Pattern;
  */
 public class SDP {
 
-    public static void main(String[] args) throws FileNotFoundException, IOException {
-        // Recieve User input for text file name
-        Scanner txtfile = new Scanner(System.in);  // Create a Scanner object
-        System.out.println("Please enter text file name:");
-        
-        // Converts file name into readable string variable
-        var txtfilename = txtfile.nextLine();  // Read user input
-        var addedtxt = txtfilename + ".txt";
-        System.out.println("File name is: " + addedtxt);  // Output user input
-        
-        Path fileName = Path.of("/Users/mosye/Downloads/"+ addedtxt);
+    public static int CodeForFindingScore(String code){
 
-        String readable = Files.readString(fileName);
-        
-        String[] words = readable.split(" ");
+        String[] words = code.split(" ");
         Pattern pattern = Pattern.compile(" ");
-        words = pattern.split(readable);
-        
+        words = pattern.split(code);
+
         ArrayList<String> list = new ArrayList<>();
 		for (String string : words) {
 			list.add(string);
@@ -78,6 +61,7 @@ public class SDP {
         
         System.out.println("The total Cyclomatic Complexity value is " + ccCalculation);
         
+        return(ccCalculation);
     }
 
 }
