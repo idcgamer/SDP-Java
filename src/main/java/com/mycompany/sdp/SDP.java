@@ -48,10 +48,9 @@ public class SDP {
         int javaCodeStatic = Collections.frequency(list, "static");
         int javaCodeVoid = Collections.frequency(list,"void");
         
-        int cplushash = Collections.frequency(list, "#");
-        int cplusinclude = Collections.frequency(list, "include");
+        int cplusinclude = Collections.frequency(list, "#include");
                 
-        if (cplushash > 0 && cplusinclude > 0){
+        if (cplusinclude > 0){
             int CtotalCount = list.size();
             int Cifcount = Collections.frequency(list, "if");
             int Ctrycount = Collections.frequency(list, "try");
@@ -65,7 +64,7 @@ public class SDP {
             
             int CCCCalculation = (Cifcount+Ctrycount+Ccatchcount+Cthencount+Cselectcount+Cswitchcount+Cforcount+Cdocount+Cwhilecount) + 1;
         
-            System.out.println("The total Cyclomatic Complexity value is " + CCCCalculation);
+            System.out.println("The total Cyclomatic Complexity value for this C++ code is " + CCCCalculation);
         }
         else if (javaCodePublic > 0 && javaCodeStatic > 0 && javaCodeVoid > 0){
             int JtotalCount = list.size();
@@ -80,7 +79,7 @@ public class SDP {
             int Jwhilecount = Collections.frequency(list, "while");
             int JCCCalculation = (Jifcount+Jtrycount+Jcatchcount+Jthencount+Jselectcount+Jswitchcount+Jforcount+Jdocount+Jwhilecount) + 1;
         
-            System.out.println("The total Cyclomatic Complexity value is " + JCCCalculation);
+            System.out.println("The total Cyclomatic Complexity value for this Java code is " + JCCCalculation);
         }
         else {
             int PtotalCount = list.size();
@@ -96,7 +95,7 @@ public class SDP {
             int Pwhilecount = Collections.frequency(list, "while");
             int PCCCalculation = (Pifcount+Pelifcount+Ptrycount+Pcatchcount+Pthencount+Pselectcount+Pswitchcount+Pforcount+Pdocount+Pwhilecount) + 1;
         
-            System.out.println("The total Cyclomatic Complexity value is " + PCCCalculation);
+            System.out.println("The total Cyclomatic Complexity value for this Python code is " + PCCCalculation);
         }
         
     }
