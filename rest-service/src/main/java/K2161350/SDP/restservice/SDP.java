@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
  */
 public class SDP {
 
-    public static int CodeForFindingScore(String code){
+    public static ArrayList<Integer> CodeForFindingScore(String code){
 
         String[] words = code.split(" ");
         Pattern pattern = Pattern.compile(" ");
@@ -29,39 +29,42 @@ public class SDP {
         
         int totalCount = list.size();
         System.out.println(totalCount);
-        
+
+        ArrayList<Integer> scores = new ArrayList<>();
+
         int ifcount = Collections.frequency(list, "if");
-        System.out.println(ifcount);
+        scores.add(ifcount);
         
         int trycount = Collections.frequency(list, "try");
-        System.out.println(trycount);
+        scores.add(trycount);
         
         int catchcount = Collections.frequency(list, "catch");
-        System.out.println(catchcount);
+        scores.add(catchcount);
         
         int thencount = Collections.frequency(list, "then");
-        System.out.println(thencount);
+        scores.add(thencount);
         
         int selectcount = Collections.frequency(list, "select");
-        System.out.println(selectcount);
+        scores.add(selectcount);
         
         int switchcount = Collections.frequency(list, "switch");
-        System.out.println(switchcount);
+        scores.add(switchcount);
         
         int forcount = Collections.frequency(list, "for");
-        System.out.println(forcount);
+        scores.add(forcount);
         
         int docount = Collections.frequency(list, "do");
-        System.out.println(docount);
+        scores.add(docount);
         
         int whilecount = Collections.frequency(list, "while");
-        System.out.println(whilecount);
+        scores.add(whilecount);
         
         int ccCalculation = (ifcount+trycount+catchcount+thencount+selectcount+switchcount+forcount+docount+whilecount) + 1;
-        
+        scores.add(ccCalculation);
+
         System.out.println("The total Cyclomatic Complexity value is " + ccCalculation);
         
-        return(ccCalculation);
+        return(scores);
     }
 
 }
