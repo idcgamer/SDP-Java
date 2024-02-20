@@ -11,6 +11,8 @@ package K2161350.SDP.restservice;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,5 +31,10 @@ public class GreetingController {
 	@GetMapping("/cc")
 	public CC cc(@RequestParam(value = "code", defaultValue = "NoCode") String code) {
 		return new CC(SDP.CodeForFindingScore(code));
+	}
+	@PostMapping(
+		value="/cc", consumes = "application/json",produces = "application/json")
+		public CodeTemplate codeForScoring(@RequestBody CodeTemplate codeForScoring) {
+		return new CodeTemplate(SDP.CodeForFindingScore(codeForScoring.getCode()));
 	}
 }
