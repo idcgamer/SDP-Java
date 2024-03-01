@@ -13,7 +13,19 @@ import java.util.regex.Pattern;
  *
  * @author mosye
  */
-public class SDP {
+public class CCjava extends CCabstract {
+    private static String ifString= "if";
+    private static String tryString= "try";
+    private static String catchString= "catch";
+    private static String thenString= "then";
+    private static String selectString= "select";
+    private static String switchString= "switch";
+    private static String forString= "for";
+    private static String doString= "do";
+    private static String whileString= "while";
+    private static ArrayList<Integer> scores = new ArrayList<>();
+
+    
 
     public static ArrayList<Integer> CodeForFindingScore(String code){
 
@@ -32,33 +44,34 @@ public class SDP {
         int totalCount = list.size();
         System.out.println(totalCount);
 
-        ArrayList<Integer> scores = new ArrayList<>();
-
-        int ifcount = Collections.frequency(list, "if");
+        int ifcount = Collections.frequency(list, ifString);
         scores.add(ifcount);
         
-        int trycount = Collections.frequency(list, "try");
+        int trycount = Collections.frequency(list, tryString);
         scores.add(trycount);
         
-        int catchcount = Collections.frequency(list, "catch");
+        int catchcount = Collections.frequency(list, 
+        catchString);
         scores.add(catchcount);
         
-        int thencount = Collections.frequency(list, "then");
+        int thencount = Collections.frequency(list, 
+        thenString);
         scores.add(thencount);
         
-        int selectcount = Collections.frequency(list, "select");
+        int selectcount = Collections.frequency(list, selectString
+        );
         scores.add(selectcount);
         
-        int switchcount = Collections.frequency(list, "switch");
+        int switchcount = Collections.frequency(list, switchString);
         scores.add(switchcount);
         
-        int forcount = Collections.frequency(list, "for");
+        int forcount = Collections.frequency(list, forString);
         scores.add(forcount);
         
-        int docount = Collections.frequency(list, "do");
+        int docount = Collections.frequency(list, doString);
         scores.add(docount);
         
-        int whilecount = Collections.frequency(list, "while");
+        int whilecount = Collections.frequency(list, whileString);
         scores.add(whilecount);
         
         int ccCalculation = (ifcount+trycount+catchcount+thencount+selectcount+switchcount+forcount+docount+whilecount) + 1;
