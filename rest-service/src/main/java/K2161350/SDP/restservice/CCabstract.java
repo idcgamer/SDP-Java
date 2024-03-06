@@ -24,10 +24,42 @@ public class CCabstract {
     private static String doString= "";
     private static String whileString= "";
     private static ArrayList<Integer> scores = new ArrayList<>();
+    private static String language = "java";
+
+    public static void setLanguage(String language) {
+        CCabstract.language = language;
+    }
+    public static String getLanguage() {
+        return language;
+    }
 
     
 
     public static ArrayList<Integer> CodeForFindingScore(String code){
+
+        setLanguage(LanguageDetection.detectLanguage(code));
+
+        if (language.equals("java")) {
+            ifString = "if";
+            tryString = "try";
+            catchString = "catch";
+            thenString = "then";
+            selectString = "select";
+            switchString = "switch";
+            forString = "for";
+            doString = "do";
+            whileString = "while";
+        } else if (language.equals("python")) {
+            ifString = "if";
+            tryString = "try";
+            catchString = "except";
+            thenString = "then";
+            selectString = "if";
+            switchString = "if";
+            forString = "for";
+            doString = "while";
+            whileString = "while";
+        }
 
         code = code.replaceAll("\\p{Punct}", " ");
 

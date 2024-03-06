@@ -1,12 +1,44 @@
 package K2161350.SDP.restservice;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class LanguageDetection {
+    private static final List<String> JAVA_KEYWORDS = Arrays.asList("abstract", "assert", "boolean",
+            "break", "byte", "case", "catch", "char", "class", "const",
+            "continue", "default", "do", "double", "else", "enum",
+            "extends", "final", "finally", "float", "for", "goto",
+            "if", "implements", "import", "instanceof", "int",
+            "interface", "long", "native", "new", "package", "private",
+            "protected", "public", "return", "short", "static",
+            "strictfp", "super", "switch", "synchronized", "this",
+            "throw", "throws", "transient", "try", "void", "volatile", "while", "{", "}");
+
+    private static final List<String> PYTHON_KEYWORDS = Arrays.asList("and", "as", "assert", "break", "class", "continue",
+            "def", "del", "elif", "else", "except", "exec", "finally",
+            "for", "from", "global", "if", "import", "in", "is", "lambda",
+            "not", "or", "pass", "print", "raise", "return", "try",
+            "while", "with", "yield", ":");
+
     public static String detectLanguage(String code){
-        if (code.contains("abstract") || code.contains("assert") || code.contains("boolean") || code.contains("break") || code.contains("byte") || code.contains("case") || code.contains("catch") || code.contains("char") || code.contains("class") || code.contains("const") || code.contains("continue") || code.contains("default") || code.contains("do") || code.contains("double") || code.contains("else") || code.contains("enum") || code.contains("extends") || code.contains("final") || code.contains("finally") || code.contains("float") || code.contains("for") || code.contains("goto") || code.contains("if") || code.contains("implements") || code.contains("import") || code.contains("instanceof") || code.contains("int") || code.contains("interface") || code.contains("long") || code.contains("native") || code.contains("new") || code.contains("package") || code.contains("private") || code.contains("protected") || code.contains("public") || code.contains("return") || code.contains("short") || code.contains("static") || code.contains("strictfp") || code.contains("super") || code.contains("switch") || code.contains("synchronized") || code.contains("this") || code.contains("throw") || code.contains("throws") || code.contains("transient") || code.contains("try") || code.contains("void") || code.contains("volatile") || code.contains("while")) {
+        int javaCount = 0;
+        int pythonCount = 0;
+
+        for (String keyword : JAVA_KEYWORDS) {
+            if (code.contains(keyword)) {
+                javaCount++;
+            }
+        }
+
+        for (String keyword : PYTHON_KEYWORDS) {
+            if (code.contains(keyword)) {
+                pythonCount++;
+            }
+        }
+
+        if (javaCount > pythonCount) {
             return "Java";
-        } else if (code.contains("and") || code.contains("as") || code.contains("assert") || code.contains("break") || code.contains("class") || code.contains("continue") || code.contains("def") || code.contains("del") || code.contains("elif") || code.contains("else") || code.contains("except") || code.contains("finally") || code.contains("for") || code.contains("from") || code.contains("global") || code.contains("if") || code.contains("import") || code.contains("in") || code.contains("is") || code.contains("lambda") || code.contains("nonlocal") || code.contains("not") || code.contains("or") || code.contains("pass") || code.contains("raise") || code.contains("return") || code.contains("try") || code.contains("while") || code.contains("with") || code.contains("yield")) {
+        } else if (pythonCount > javaCount) {
             return "Python";
         } else {
             return "Unknown";
