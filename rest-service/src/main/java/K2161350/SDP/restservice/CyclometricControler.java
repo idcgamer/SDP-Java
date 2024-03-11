@@ -19,18 +19,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class GreetingController {
-
-	private static final String template = "Hello, %s!";
-	private final AtomicLong counter = new AtomicLong();
-
-	@GetMapping("/greeting")
-	public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return new Greeting(counter.incrementAndGet(), String.format(template, name));
-	}
+//This class is responsible for handling the requests and responses for the cyclomatic complexity
+public class CyclometricControler {
 	@PostMapping(
 		value="/cc", consumes = "application/json",produces = "application/json")
 		public CodeTemplate codeForScoring(@RequestBody CodeTemplate codeForScoring) {
-		return new CodeTemplate(SDP.CodeForFindingScore(codeForScoring.getCode()));
+		return new CodeTemplate(SDP.CodeForFindingScore(codeForScoring.getCode()), LanguageDetection.detectLanguage(codeForScoring.getCode()));
 	}
 }

@@ -12,6 +12,7 @@
   *
   * @author mosye
   */
+  //This class is responsible for finding the cyclomatic complexity of the code
  public class SDP {
      private static String ifString= "";
      private static String tryString= "";
@@ -37,8 +38,12 @@
      public static ArrayList<Integer> CodeForFindingScore(String code){
  
          setLanguage(LanguageDetection.detectLanguage(code));
+         System.out.println(LanguageDetection.detectLanguage(code));
+         scores = new ArrayList<>();
+
+
  
-         if (language.equals("java")) {
+         if (language.equals("Java")) {
              ifString = "if";
              tryString = "try";
              catchString = "catch";
@@ -48,13 +53,13 @@
              forString = "for";
              doString = "do";
              whileString = "while";
-         } else if (language.equals("python")) {
+         } else if (language.equals("Python")) {
              ifString = "if";
              tryString = "try";
              catchString = "except";
              thenString = "then";
-             selectString = "if";
-             switchString = "if";
+             selectString = "";
+             switchString = "";
              forString = "for";
              doString = "while";
              whileString = "while";
@@ -83,6 +88,8 @@
          
          int catchcount = Collections.frequency(list, 
          catchString);
+         System.out.println(catchString);
+         System.out.println(catchcount);
          scores.add(catchcount);
          
          int thencount = Collections.frequency(list, 
@@ -109,6 +116,7 @@
          scores.add(ccCalculation);
  
          System.out.println("The total Cyclomatic Complexity value is " + ccCalculation);
+         System.out.println(scores);
          
          return(scores);
      }

@@ -2,7 +2,7 @@ package K2161350.SDP.restservice;
 
 import java.util.Arrays;
 import java.util.List;
-
+//This class is responsible for detecting the language of the code
 public class LanguageDetection {
     private static final List<String> JAVA_KEYWORDS = Arrays.asList("abstract", "assert", "boolean",
             "break", "byte", "case", "catch", "char", "class", "const",
@@ -35,6 +35,8 @@ public class LanguageDetection {
                 pythonCount++;
             }
         }
+        System.out.println("Java count: " + javaCount);
+        System.out.println("Python count: " + pythonCount);
 
         if (javaCount > pythonCount) {
             return "Java";

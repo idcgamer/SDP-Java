@@ -1,7 +1,7 @@
 package K2161350.SDP.restservice;
 
 import java.util.ArrayList;
-
+//THis is the class that acts as a template for the code that is being sent and received from the front end
 public class CodeTemplate {
     private String code;
     private int totalScore;
@@ -75,7 +75,7 @@ public class CodeTemplate {
     CodeTemplate(int score){
         this.totalScore = score;
     }
-    CodeTemplate(ArrayList<Integer> results){
+    CodeTemplate(ArrayList<Integer> results,String code){
         this.totalScore = results.get(9);
         this.ifScore = results.get(0);
         this.tryScore = results.get(1);
@@ -86,6 +86,7 @@ public class CodeTemplate {
         this.forScore = results.get(6);
         this.doScore = results.get(7);
         this.whileScore = results.get(8);
+        this.code = code;
     }
     public String getCode() {
         return code;
