@@ -40,9 +40,7 @@
          setLanguage(LanguageDetection.detectLanguage(code));
          System.out.println(LanguageDetection.detectLanguage(code));
          scores = new ArrayList<>();
-
-
- 
+        System.out.println(code);
          if (language.equals("Java")) {
              ifString = "if";
              tryString = "try";
@@ -58,7 +56,7 @@
              tryString = "try";
              catchString = "except";
              thenString = "then";
-             selectString = "";
+             selectString = "elif";
              switchString = "";
              forString = "for";
              doString = "while";
@@ -88,8 +86,6 @@
          
          int catchcount = Collections.frequency(list, 
          catchString);
-         System.out.println(catchString);
-         System.out.println(catchcount);
          scores.add(catchcount);
          
          int thencount = Collections.frequency(list, 
