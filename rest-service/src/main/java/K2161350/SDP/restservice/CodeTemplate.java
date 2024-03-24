@@ -3,9 +3,14 @@ package K2161350.SDP.restservice;
 import java.util.ArrayList;
 //THis is the class that acts as a template for the code that is being sent and received from the front end
 public class CodeTemplate {
+    private String metric = "Cycolomatic";
     private String code;
     private int totalScore;
     private int ifScore = 0;
+
+    public String getMetric() {
+        return metric;
+    }
     public int getIfScore() {
         return ifScore;
     }
