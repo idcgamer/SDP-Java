@@ -42,7 +42,7 @@ public class SDPHC {
                 "++", "--", "==", "!=", ">", "<", ">=", "<=", "&&", "||", "!",
                 "&", "|", "^", "~", "<<", ">>", ">>>", "?", ":", "::", "->",
                 "new", "instanceof", "if", "for", "while", "do", "switch", "case",
-                "default", "(","[","{",".","return","length",","
+                "default", "(","[]","{",".","return","length",",",";","import","package","class","interface"
             );
 
         } else if (language.equals("Python")) {
@@ -59,17 +59,32 @@ public class SDPHC {
         }
 
         List<String> words = Arrays.asList(hcCode.split("[\\s\\p{Punct}]+"));
-        List<String> punctuationStrings = Arrays.asList(hcCode.split("[a-zA-Z0-9\\s]+"));
+        List<String> punctuationStrings = new ArrayList<>();
+        for (String word : hcCode.split("[a-zA-Z0-9\\s]+")) {
+            if (word.contains(")")) {
+                List<String> tempWord = new ArrayList<>();
+                for(String letter : word.split("")){
+                    if(!letter.equals(")")||letter.equals("}")||letter.equals("]")){
+                        tempWord.add(letter);
+                    }
+                }
+                if (tempWord.size() > 0) {
+                    punctuationStrings.add(String.join("", tempWord));
+                }
+            }
+            else{
+                punctuationStrings.add(word);
+            }
+        }
         List<String> totaList = new ArrayList<>();
 
-        for (String word : punctuationStrings){
-            if(!word.equals(")")||word.equals("}")||word.equals("]")||word.equals("\"")||word.equals("\'")||word.equals(" ")||word.equals("\n")||word.equals("\t")||word.equals("\r")||word.equals("")){
+        for (String word : punctuationStrings) {
+            if (!word.equals(")") || word.equals("}") || word.equals("]") || word.equals("\"") || word.equals("\'") || word.equals(" ") || word.equals("\n") || word.equals("\t") || word.equals("\r") || word.equals("")) {
                 totaList.add(word);
             }
         }
 
         totaList.addAll(words);
-
 
         int operator_count = 0;
         int operand_count = 0;
@@ -78,15 +93,16 @@ public class SDPHC {
 
         System.out.println(totaList);
 
-
-
         for (String word : totaList) {
             if (operators.contains(word)) {
                 operator_count++;
                 unique_operators.add(word);
+                System.out.println("Operator: " + word);
             } else {
                 operand_count++;
                 unique_operands.add(word);
+
+                System.out.println("Operand: " + word);
             }
         }
 
