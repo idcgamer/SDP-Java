@@ -67,6 +67,9 @@ public class SDPHC {
                     if(!letter.equals(")")||letter.equals("}")||letter.equals("]")){
                         tempWord.add(letter);
                     }
+                    if(letter.equals("\\}")){
+                        System.out.println("Found }");
+                    }
                 }
                 if (tempWord.size() > 0) {
                     punctuationStrings.add(String.join("", tempWord));
